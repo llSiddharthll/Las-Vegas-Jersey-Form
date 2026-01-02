@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jersey Sizing Form - Global Cricket League</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --red-accent: #971117;
+            --yellow-accent: #b4750b;
+        }
+        
+        .red-accent { color: var(--red-accent); }
+        .yellow-accent { color: var(--yellow-accent); }
+        
+        .bg-red-accent { background-color: var(--red-accent); }
+        .bg-yellow-accent { background-color: var(--yellow-accent); }
+        
+        .border-red-accent { border-color: var(--red-accent); }
+        .border-yellow-accent { border-color: var(--yellow-accent); }
+        
+        .focus-ring-red:focus {
+            border-color: var(--red-accent);
+            box-shadow: 0 0 0 3px rgba(151, 17, 23, 0.2);
+        }
+        
+        .focus-ring-yellow:focus {
+            border-color: var(--yellow-accent);
+            box-shadow: 0 0 0 3px rgba(180, 117, 11, 0.2);
+        }
+        
+        .btn-red {
+            background-color: var(--red-accent);
+            color: white;
+        }
+        
+        .btn-red:hover {
+            background-color: #7a0e13;
+        }
+        
+        .btn-yellow {
+            background-color: var(--yellow-accent);
+            color: white;
+        }
+        
+        .btn-yellow:hover {
+            background-color: #966109;
+        }
+        
+        .header-gradient {
+            background: linear-gradient(90deg, var(--red-accent) 0%, var(--yellow-accent) 100%);
+        }
+        
+        .size-guide-btn {
+            border: 2px solid var(--yellow-accent);
+            color: var(--yellow-accent);
+        }
+        
+        .size-guide-btn:hover {
+            background-color: var(--yellow-accent);
+            color: white;
+        }
+        
+        .checkbox-red:checked {
+            background-color: var(--red-accent);
+            border-color: var(--red-accent);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen p-4 md:p-6">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="header-gradient rounded-t-xl p-6 text-white">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold">Jersey Sizing Form</h1>
+                    <p class="text-lg md:text-xl mt-2">Global Cricket League</p>
+                </div>
+                <div class="mt-4 md:mt-0 text-center">
+                    <div class="text-xl font-bold">Las Vegas Aces</div>
+                    <div class="flex items-center justify-center mt-2">
+                        <div class="w-4 h-4 rounded-full bg-white mr-2"></div>
+                        <div class="text-sm">Official Team Form</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Form Container -->
+        <div class="bg-white shadow-lg rounded-b-xl p-6 md:p-8">
+            <!-- Form Instructions -->
+            <div class="mb-8 p-4 border-l-4 border-yellow-accent bg-yellow-50">
+                <div class="flex items-start">
+                    <i class="fas fa-info-circle yellow-accent text-xl mr-3 mt-1"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Important Instructions</h3>
+                        <p class="text-gray-700 mt-1">Please fill out this form accurately to ensure your jersey fits perfectly. All measurements should be in inches. If you're unsure about any measurements, refer to the size guide or contact your team manager.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <form id="jerseyForm" class="space-y-8">
+                <!-- Player Information Section -->
+                <section>
+                    <h2 class="text-xl font-bold border-b pb-2 red-accent border-red-accent">Player Information</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                        <div>
+                            <label for="playerName" class="block text-gray-700 font-medium mb-2">Full Name <span class="red-accent">*</span></label>
+                            <input type="text" id="playerName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus-ring-red" placeholder="Enter player's full name">
+                        </div>
+                        
+                        <div>
+                            <label for="playerNumber" class="block text-gray-700 font-medium mb-2">Jersey Number <span class="red-accent">*</span></label>
+                            <input type="number" id="playerNumber" min="1" max="99" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus-ring-red" placeholder="Enter preferred number">
+                        </div>
+                        
+                        <div>
+                            <label for="playerRole" class="block text-gray-700 font-medium mb-2">Playing Role</label>
+                            <select id="playerRole" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus-ring-red">
+                                <option value="">Select role</option>
+                                <option value="batsman">Batsman</option>
+                                <option value="bowler">Bowler</option>
+                                <option value="all-rounder">All-Rounder</option>
+                                <option value="wicket-keeper">Wicket Keeper</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="playerEmail" class="block text-gray-700 font-medium mb-2">Email Address <span class="red-accent">*</span></label>
+                            <input type="email" id="playerEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus-ring-red" placeholder="player@example.com">
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Jersey Size Section -->
+                <section>
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <h2 class="text-xl font-bold border-b pb-2 yellow-accent border-yellow-accent">Jersey Size & Measurements</h2>
+                        <button type="button" class="size-guide-btn px-4 py-2 rounded-lg font-medium mt-2 md:mt-0 transition duration-200">
+                            <i class="fas fa-ruler mr-2"></i>View Size Guide
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Preferred Jersey Size <span class="red-accent">*</span></label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <label class="border border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-yellow-accent transition duration-200">
+                                    <input type="radio" name="jerseySize" value="S" class="hidden" required>
+                                    <span class="text-lg font-medium">S</span>
+                                    <p class="text-sm text-gray-600 mt-1">Small</p>
+                                </label>
+                                <label class="border border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-yellow-accent transition duration-200">
+                                    <input type="radio" name="jerseySize" value="M" class="hidden">
+                                    <span class="text-lg font-medium">M</span>
+                                    <p class="text-sm text-gray-600 mt-1">Medium</p>
+                                </label>
+                                <label class="border border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-yellow-accent transition duration-200">
+                                    <input type="radio" name="jerseySize" value="L" class="hidden">
+                                    <span class="text-lg font-medium">L</span>
+                                    <p class="text-sm text-gray-600 mt-1">Large</p>
+                                </label>
+                                <label class="border border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-yellow-accent transition duration-200">
+                                    <input type="radio" name="jerseySize" value="XL" class="hidden">
+                                    <span class="text-lg font-medium">XL</span>
+                                    <p class="text-sm text-gray-600 mt-1">X-Large</p>
+                                </label>
+                                <label class="border border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-yellow-accent transition duration-200">
+                                    <input type="radio" name="jerseySize" value="2XL" class="hidden">
+                                    <span class="text-lg font-medium">2XL</span>
+                                    <p class="text-sm text-gray-600 mt-1">XX-Large</p>
+                                </label>
+                                <label class="border border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-yellow-accent transition duration-200">
+                                    <input type="radio" name="jerseySize" value="3XL" class="hidden">
+                                    <span class="text-lg font-medium">3XL</span>
+                                    <p class="text-sm text-gray-600 mt-1">XXX-Large</p>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label for="chestSize" class="block text-gray-700 font-medium mb-2">Chest Measurement (inches) <span class="red-accent">*</span></label>
+                                <input type="number" id="chestSize" step="0.5" min="30" max="60" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus-ring-yellow" placeholder="e.g., 42">
+                                <p class="text-sm text-gray-600 mt-1">Measure around the fullest part of your chest</p>
+                            </div>
+                            
+                            <div>
+                                <label for="waistSize" class="block text-gray-700 font-medium mb-2">Waist Measurement (inches)</label>
+                                <input type="number" id="waistSize" step="0.5" min="24" max="60" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus-ring-yellow" placeholder="e.g., 36">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <label for="specialInstructions" class="block text-gray-700 font-medium mb-2">Special Instructions</label>
+                        <textarea id="specialInstructions" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus-ring-yellow" placeholder="Any specific requirements for your jersey (e.g., longer length, looser fit, etc.)"></textarea>
+                    </div>
+                </section>
+                
+                <!-- Additional Items Section -->
+                <section>
+                    <h2 class="text-xl font-bold border-b pb-2 red-accent border-red-accent">Additional Items</h2>
+                    <p class="text-gray-700 mt-2 mb-4">Select any additional items you would like to order:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:border-red-accent transition duration-200">
+                            <input type="checkbox" class="checkbox-red h-5 w-5 text-red-accent rounded">
+                            <div class="ml-3">
+                                <span class="font-medium">Cricket Trousers</span>
+                                <p class="text-sm text-gray-600">White cricket trousers</p>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:border-red-accent transition duration-200">
+                            <input type="checkbox" class="checkbox-red h-5 w-5 text-red-accent rounded">
+                            <div class="ml-3">
+                                <span class="font-medium">Team Cap</span>
+                                <p class="text-sm text-gray-600">Las Vegas Aces branded cap</p>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:border-red-accent transition duration-200">
+                            <input type="checkbox" class="checkbox-red h-5 w-5 text-red-accent rounded">
+                            <div class="ml-3">
+                                <span class="font-medium">Training Shirt</span>
+                                <p class="text-sm text-gray-600">Practice/training shirt</p>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:border-red-accent transition duration-200">
+                            <input type="checkbox" class="checkbox-red h-5 w-5 text-red-accent rounded">
+                            <div class="ml-3">
+                                <span class="font-medium">Team Jacket</span>
+                                <p class="text-sm text-gray-600">Weatherproof team jacket</p>
+                            </div>
+                        </label>
+                    </div>
+                </section>
+                
+                <!-- Form Actions -->
+                <div class="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-gray-200">
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-gray-700">
+                            <i class="fas fa-exclamation-circle red-accent mr-1"></i>
+                            Fields marked with <span class="red-accent">*</span> are required
+                        </p>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <button type="reset" class="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition duration-200">
+                            <i class="fas fa-redo mr-2"></i>Reset Form
+                        </button>
+                        <button type="submit" class="btn-red px-6 py-3 font-medium rounded-lg transition duration-200">
+                            <i class="fas fa-paper-plane mr-2"></i>Submit Sizing
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <!-- Form Submission Message (Hidden by default) -->
+            <div id="successMessage" class="hidden mt-8 p-6 bg-green-50 border border-green-200 rounded-lg">
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-green-500 text-2xl mr-3"></i>
+                    <div>
+                        <h3 class="font-bold text-green-800 text-lg">Jersey Sizing Submitted Successfully!</h3>
+                        <p class="text-green-700 mt-1">Thank you for submitting your jersey measurements. Your form has been received for <span class="font-bold">Las Vegas Aces</span> in the <span class="font-bold">Global Cricket League</span>. You will receive a confirmation email shortly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="mt-6 text-center text-gray-600 text-sm">
+            <p>© 2023 Global Cricket League • Las Vegas Aces Team Management</p>
+            <p class="mt-1">For questions, contact: <span class="yellow-accent">jerseys@lvaces.cricket</span> or call: <span class="red-accent">(702) 555-ACES</span></p>
+        </div>
+    </div>
+    
+    <!-- Size Guide Modal (Hidden by default) -->
+    <div id="sizeGuideModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="header-gradient p-6 text-white rounded-t-xl flex justify-between items-center">
+                <h3 class="text-xl font-bold">Jersey Size Guide</h3>
+                <button id="closeModal" class="text-white text-2xl hover:text-gray-200">&times;</button>
+            </div>
+            
+            <div class="p-6">
+                <p class="text-gray-700 mb-6">Use this guide to determine your correct jersey size. All measurements are in inches.</p>
+                
+                <div class="overflow-x-auto">
+                    <table class="min-w-full table-auto border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="border border-gray-300 px-4 py-3 font-bold">Size</th>
+                                <th class="border border-gray-300 px-4 py-3 font-bold">Chest</th>
+                                <th class="border border-gray-300 px-4 py-3 font-bold">Waist</th>
+                                <th class="border border-gray-300 px-4 py-3 font-bold">Height Range</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-300 px-4 py-3 font-medium">Small (S)</td>
+                                <td class="border border-gray-300 px-4 py-3">34-36"</td>
+                                <td class="border border-gray-300 px-4 py-3">28-30"</td>
+                                <td class="border border-gray-300 px-4 py-3">5'4" - 5'7"</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="border border-gray-300 px-4 py-3 font-medium">Medium (M)</td>
+                                <td class="border border-gray-300 px-4 py-3">38-40"</td>
+                                <td class="border border-gray-300 px-4 py-3">32-34"</td>
+                                <td class="border border-gray-300 px-4 py-3">5'8" - 5'10"</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 px-4 py-3 font-medium">Large (L)</td>
+                                <td class="border border-gray-300 px-4 py-3">42-44"</td>
+                                <td class="border border-gray-300 px-4 py-3">36-38"</td>
+                                <td class="border border-gray-300 px-4 py-3">5'11" - 6'1"</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="border border-gray-300 px-4 py-3 font-medium">X-Large (XL)</td>
+                                <td class="border border-gray-300 px-4 py-3">46-48"</td>
+                                <td class="border border-gray-300 px-4 py-3">40-42"</td>
+                                <td class="border border-gray-300 px-4 py-3">6'2" - 6'4"</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 px-4 py-3 font-medium">XX-Large (2XL)</td>
+                                <td class="border border-gray-300 px-4 py-3">50-52"</td>
+                                <td class="border border-gray-300 px-4 py-3">44-46"</td>
+                                <td class="border border-gray-300 px-4 py-3">6'2" - 6'4"</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="border border-gray-300 px-4 py-3 font-medium">XXX-Large (3XL)</td>
+                                <td class="border border-gray-300 px-4 py-3">54-56"</td>
+                                <td class="border border-gray-300 px-4 py-3">48-50"</td>
+                                <td class="border border-gray-300 px-4 py-3">6'2" - 6'4"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-8 p-4 bg-yellow-50 border-l-4 border-yellow-accent">
+                    <h4 class="font-bold text-gray-800 mb-2">How to Measure:</h4>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li><span class="font-medium">Chest:</span> Measure around the fullest part of your chest, keeping the tape level</li>
+                        <li><span class="font-medium">Waist:</span> Measure around your natural waistline</li>
+                        <li>For best fit, wear lightweight clothing when measuring</li>
+                    </ul>
+                </div>
+                
+                <div class="flex justify-end mt-6">
+                    <button id="closeModalBtn" class="btn-yellow px-6 py-3 font-medium rounded-lg transition duration-200">Close Guide</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Form submission handler
+        document.getElementById('jerseyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send the form data to a server here
+            // For this example, we'll just show a success message
+            
+            // Hide the form
+            document.getElementById('jerseyForm').classList.add('hidden');
+            
+            // Show success message
+            document.getElementById('successMessage').classList.remove('hidden');
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Size guide modal handlers
+        document.querySelector('.size-guide-btn').addEventListener('click', function() {
+            document.getElementById('sizeGuideModal').classList.remove('hidden');
+        });
+        
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('sizeGuideModal').classList.add('hidden');
+        });
+        
+        document.getElementById('closeModalBtn').addEventListener('click', function() {
+            document.getElementById('sizeGuideModal').classList.add('hidden');
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('sizeGuideModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+            }
+        });
+        
+        // Radio button styling
+        document.querySelectorAll('input[name="jerseySize"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Remove selected style from all labels
+                document.querySelectorAll('label[for^="jerseySize"]').forEach(label => {
+                    label.classList.remove('border-yellow-accent', 'bg-yellow-50');
+                });
+                
+                // Add selected style to the clicked label
+                if (this.checked) {
+                    this.closest('label').classList.add('border-yellow-accent', 'bg-yellow-50');
+                }
+            });
+        });
+        
+        // Checkbox styling
+        document.querySelectorAll('.checkbox-red').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    this.closest('label').classList.add('border-red-accent', 'bg-red-50');
+                } else {
+                    this.closest('label').classList.remove('border-red-accent', 'bg-red-50');
+                }
+            });
+        });
+        
+        // Form reset handler
+        document.querySelector('button[type="reset"]').addEventListener('click', function() {
+            // Reset radio button styling
+            document.querySelectorAll('label[for^="jerseySize"]').forEach(label => {
+                label.classList.remove('border-yellow-accent', 'bg-yellow-50');
+            });
+            
+            // Reset checkbox styling
+            document.querySelectorAll('.checkbox-red').forEach(checkbox => {
+                checkbox.closest('label').classList.remove('border-red-accent', 'bg-red-50');
+            });
+            
+            // Hide success message if visible
+            document.getElementById('successMessage').classList.add('hidden');
+            
+            // Show form if hidden
+            document.getElementById('jerseyForm').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
